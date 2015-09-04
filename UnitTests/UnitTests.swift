@@ -23,16 +23,11 @@ class UnitTests: XCTestCase {
         super.tearDown()
     }
     
-    func testInit() {
+    func testTitle() {
         let p = CKTextFieldTableCell()
-        expect(p.someProperty).to(equal("a string"))
+        let expectedTitle = "a string"
+        p.title = expectedTitle
+        expect(p.title).to(equal(expectedTitle))
+        expect(p.textLabel?.text).to(equal(expectedTitle))
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
 }
