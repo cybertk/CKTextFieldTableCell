@@ -16,13 +16,8 @@ public class CKTextFieldTableCell : UITableViewCell {
     
     @IBOutlet var textField: UITextField!
     
-    @IBInspectable public var title: String? {
-        didSet {
-            textLabel?.text = title
-        }
-    }
-    
-    @IBInspectable public var titleWidth: Int?
+    @IBInspectable public var enableFixedTitleWidth: Bool = false
+    @IBInspectable public var titleWidth: Int = 100
     
     // MARK: Initilizers
     
@@ -71,8 +66,9 @@ public class CKTextFieldTableCell : UITableViewCell {
         // VFL Syntax, see https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/AutolayoutPG/VisualFormatLanguage/VisualFormatLanguage.html#//apple_ref/doc/uid/TP40010853-CH3-SW1
         
         // Horizontal constraints
-        if let width = titleWidth {
-            constraints += constraintsWithVisualFormat("H:|-15-[textLabel(\(width))]-20-[textField]-|", .AlignAllCenterY)
+        if enableFixedTitleWidth {
+            textLabel!.setContentCompressionResistancePriority(UILayoutPriorityRequired, forAxis: .Horizontal)
+            constraints += constraintsWithVisualFormat("H:|-15-[textLabel(\(titleWidth))]-20-[textField]-|", .AlignAllCenterY)
         } else {
             constraints += constraintsWithVisualFormat("H:|-15-[textLabel]-20-[textField]-|", .AlignAllCenterY)
             
