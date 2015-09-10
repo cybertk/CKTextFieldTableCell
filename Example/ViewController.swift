@@ -9,27 +9,19 @@ import UIKit
 
 import CKTextFieldTableCell
 
-class ViewController: UIViewController {
+class ViewController: UITableViewController {
     
     // MARK: Outlets
-    
-    @IBOutlet weak var label: UILabel!
     
     // MARK: Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        let p = CKTextFieldTableCell()
-        label.text = p.hello()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 
